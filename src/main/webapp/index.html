@@ -1,9 +1,51 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<script type="text/javascript" src="/javascript/lib/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="/javascript/contact.js"></script>
+		<script src='https://www.google.com/recaptcha/api.js'></script>
 	</head>
 	<body>
 		<h1>Coming Soon - Pet Portraits By Kathy!</h1>
 		<img alt="" src="images/super_dog.gif">
+		<button class="g-recaptcha" data-sitekey="6Le6tysUAAAAABCPwHpeL0gvKrVGRKE67dQyNZx4" data-callback="invisibleReCaptchaCallback">Submit</button>
+	
+		<div id="content_div" class="content_background_left">
+			<div class="content_background_right">
+				<form id="contactForm" name="contact" method="POST"
+					action="/submitContact">
+					<fieldset>
+						<label for="fullName" id="fullName_label">*Your Name (First
+							Last):</label> <input type="text" name="fullName" id="fullName" /> <label
+							for="fullName" id="fullName_error"
+							style="color: red; display: none">This field is required</label> <br />
+						<br /> <label for="contactType" id="contactType_label">*How
+							do you wish to be contacted?</label> <select name="contactType"
+							id="contactType">
+							<option value="email" selected="selected">E-mail</option>
+							<option value="phone">Phone</option>
+						</select> <br /> <br /> <span id="emailSpanContact"> <label
+							for="eMailAddress" id="eMailAddress_label">*Your e-mail
+								address:</label> <input type="text" name="emailAddress" id="emailAddress" />
+							<label for="eMailAddress" id="eMailAddress_error"
+							style="color: red; display: none">This field is required</label> <br />
+							<br />
+						</span> <span id="phoneSpanContact" style="display: none;"> <label
+							for="phoneNumber" id="phoneNumber_label">*Your phone
+								number:</label> <input type="text" name="phoneNumber" id="phoneNumber" />
+							<label for="phoneNumber" id="phoneNumber_error"
+							style="color: red; display: none">This field is required</label> <br />
+							<br />
+						</span> <label for="questionsOrComments" id="questionsOrComments_label">*Enter
+							your questions or comments in the box below.</label> <br />
+						<textarea cols="50" rows="8" name="questionsOrComments"
+							id="questionsOrComments"></textarea>
+						<label for="questionsOrComments" id="questionsOrComments_error"
+							style="color: red; display: none">This field is required</label> <br />
+						<input id="submitContact" type="button" value="Submit" />&nbsp;&nbsp; <input id="cancelContact" type="button" value="Cancel" />
+					</fieldset>
+				</form>
+			</div>
+		</div>
 	</body>
 </html>
