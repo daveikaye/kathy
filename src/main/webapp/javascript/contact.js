@@ -92,8 +92,10 @@ function invisibleReCaptchaCallback(data) {
 	$.post('/rest/email', {'recaptcha_response':data})
 	 .done(function(data) {
 		 console.log('success: '+data)
+		 grecaptcha.reset()
 	 })
 	 .fail(function(data) {
 		 console.log('error: '+data)
+		 grecaptcha.reset()
 	 })
 }

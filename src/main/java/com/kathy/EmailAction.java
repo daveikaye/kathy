@@ -12,14 +12,19 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class EmailAction {
 
+	private VerifyRecaptcha verifyRecaptcha = new VerifyRecaptcha();
+	
 	@POST
 	@Path("/email")
-	public SomeValue processEmailRequest(@FormParam("recaptcha_response") String recaptchaResponse) {
-		System.out.println(recaptchaResponse);
+	public RecaptchaStatus processEmailRequest(@FormParam("recaptcha_response") String recaptchaResponse) {
+		if (verifyRecaptcha.verify(recaptchaResponse)) {
+			System.out.println("VALID!!!");
+			
+			return new RecaptchaStatus("SUCCESS");
+		}
+		
 
-		SomeValue someValue = new SomeValue("val 1", "val 2");
-
-		return someValue;
+		return new RecaptchaStatus("FAILURE");
 	}
 
 }
